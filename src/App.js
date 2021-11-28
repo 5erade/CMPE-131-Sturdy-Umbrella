@@ -1,6 +1,4 @@
-import {BrowserRouter as Router, Route, Routes, Switch} from "react-router-dom";
-import index from "./index";
-import Game from "./Game"
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import GamePage from "./GamePage";
 import  "./Game.css"
 
@@ -15,8 +13,6 @@ function App() {
             </Router>
         </div>
     );
-
-
 
 }
 

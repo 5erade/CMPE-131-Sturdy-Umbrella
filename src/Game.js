@@ -1,8 +1,6 @@
 import * as React from 'react';
-import Container from '@mui/material/Container';
 import {Button, Typography} from "@mui/material";
 import styled from "@emotion/styled";
-//import * as ReactDOM from "react-dom";
 import './Game.css';
 const MyButton = styled(Button)({
     border: '2px solid',
@@ -21,7 +19,7 @@ class Square extends React.Component {
     render() {
         return (
             <MyButton
-                className="square"
+                className="tile"
                 onClick={() => this.props.onClick()}
             >
                 {this.props.value}

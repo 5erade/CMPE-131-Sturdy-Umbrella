@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Game from "./Game";
-import {Box, Card, Grid} from "@material-ui/core";
-import {Button, Link, Typography} from "@mui/material";
+import {Box,  Grid} from "@material-ui/core";
+import {Button, Typography} from "@mui/material";
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 
 
