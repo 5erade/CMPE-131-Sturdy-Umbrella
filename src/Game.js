@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Button, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import './Game.css';
+import {TextField} from "@material-ui/core";
 const MyButton = styled(Button)({
     border: '2px solid',
     borderRadius: 0,
@@ -15,7 +16,7 @@ const MyButton = styled(Button)({
 });
 
 
-class Square extends React.Component {
+class Tile extends React.Component {
     render() {
         return (
             <MyButton
@@ -31,29 +32,29 @@ class Board extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            squares: Array(9).fill(null),
-            xIsNext: true,
+            gameTiles: Array(9).fill(null),
+            nextMove: true,
         };
     }
 
     handleClick(i) {
-        const squares = this.state.squares.slice();
-        if (calculateWinner(squares) || squares[i]) {
+        const tiles = this.state.gameTiles.slice();
+        if (calculateWinner(tiles) || tiles[i]) {
             return;
         }
-        squares[i] = this.state.xIsNext ? 'X' : 'O';
+        tiles[i] = this.state.nextMove ? 'ABC' : 'DEF';
 
         this.setState({
-            squares: squares,
-            xIsNext: !this.state.xIsNext,
+            gameTiles: tiles,
+            nextMove: !this.state.nextMove,
         });
     }
 
-    renderSquare(i) {
+    renderTile(i) {
         return (
 
-                <Square className="text"
-                    value={this.state.squares[i]}
+                <Tile
+                    value={this.state.gameTiles[i]}
                     onClick={() => this.handleClick(i)}
                 />
 
@@ -63,12 +64,12 @@ class Board extends React.Component {
     }
 
     render() {
-        const winner = calculateWinner(this.state.squares);
+        const winner = calculateWinner(this.state.gameTiles);
         let status;
         if (winner) {
             status = 'Winner: ' + winner;
         } else {
-            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+            status = 'Next player: ' + (this.state.nextMove ? 'X' : 'O');
         }
 
         return (
@@ -79,13 +80,13 @@ class Board extends React.Component {
                     </div>
                 </Typography>
                 <div className="board-row">
-                    {this.renderSquare(0)}{this.renderSquare(1)}{this.renderSquare(2)}
+                    {this.renderTile(0)}{this.renderTile(1)}{this.renderTile(2)}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(3)}{this.renderSquare(4)}{this.renderSquare(5)}
+                    {this.renderTile(3)}{this.renderTile(4)}{this.renderTile(5)}
                 </div>
                 <div className="board-row">
-                    {this.renderSquare(6)}{this.renderSquare(7)}{this.renderSquare(8)}
+                    {this.renderTile(6)}{this.renderTile(7)}{this.renderTile(8)}
                 </div>
             </div>
         );
@@ -98,7 +99,9 @@ class Game extends React.Component {
             <div className="game">
                 <div className="game-board">
                     <Board />
+
                 </div>
+
             </div>
         );
     }
@@ -112,7 +115,7 @@ export default Game;
   //  <Game />,
    // document.getElementById('root')
 //);
-function calculateWinner(squares) {
+function calculateWinner(gameTiles) {
     const lines = [
         [0, 1, 2],
         [3, 4, 5],
@@ -125,8 +128,8 @@ function calculateWinner(squares) {
     ];
     for (let i = 0; i < lines.length; i++) {
         const [a, b, c] = lines[i];
-        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+        if (gameTiles[a] && gameTiles[a] === gameTiles[b] && gameTiles[a] === gameTiles[c]) {
+            return gameTiles[a];
         }
     }
     return null;
