@@ -42,7 +42,7 @@ class Board extends React.Component {
         if (calculateWinner(tiles) || tiles[i]) {
             return;
         }
-        tiles[i] = this.state.nextMove ? 'ABC' : 'DEF';
+        tiles[i] = this.state.nextMove ? 'P' : 'O';
 
         this.setState({
             gameTiles: tiles,
