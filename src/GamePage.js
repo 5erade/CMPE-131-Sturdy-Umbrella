@@ -20,13 +20,10 @@ class GamePage extends Component {
                 <Grid container spacing={1}>
                     <Grid item xs={4}>
                         <Box m={20}>
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+                            <TextField sx={{ m: 1, borderColor:'#ffffff'}} ref="p1" defaultValue={'X'} id="player1" label="Player 1 Icon" variant="outlined" >0</TextField>
                             <br/>
-                            <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+                            <TextField sx={{ m: 1, color:'#ffffff'}} ref="p2" defaultValue={'O'} id="player2" label="Player 2 Icon" variant="outlined" />
                             <br/>
-                            <Button variant={"contained"}>
-                                Select
-                            </Button>
                         </Box>
                     </Grid>
                     <Grid item xs={4}>
@@ -39,8 +36,8 @@ class GamePage extends Component {
                             </Typography>
                             <br/>
                             <Game/>
-                            <Button style={{
-                                color: '#35ff00',
+                            <Button sx={{ m:1, borderColor:'#ffffff'}} style={{
+                                color: '#ffffff',
                             }} variant={"outlined"} onClick={refreshPage
 
                             }>
