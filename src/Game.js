@@ -182,7 +182,9 @@ function calculateWinner(gameTiles) {
                     return gameTiles[a];
                 }
             }
-            if (gameTiles.includes(null) === false)
+            if (gameTiles.includes(null) === false){
+                return 0;
+            }
             return null;
 
 
