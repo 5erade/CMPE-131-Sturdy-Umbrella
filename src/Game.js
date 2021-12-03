@@ -176,18 +176,16 @@ function calculateWinner(gameTiles) {
         [0, 3, 6], [1, 4, 7], [2, 5, 8],
         [0, 4, 8], [2, 4, 6],
     ];
-
-        if (gameTiles.includes(null) === true) {
             for (let i = 0; i < lines.length; i++) {
                 const [a, b, c] = lines[i];
                 if (gameTiles[a] && gameTiles[a] === gameTiles[b] && gameTiles[a] === gameTiles[c]) {
                     return gameTiles[a];
                 }
             }
+            if (gameTiles.includes(null) === false){
+                return 0;
+            }
             return null;
-        } else{
-            return 0;
-        }
 
 
 }
