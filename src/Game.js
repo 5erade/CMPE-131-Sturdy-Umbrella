@@ -13,7 +13,6 @@ const MyButton = styled(Button)({
     margin: -1,
     fontSize: 40,
     color: '#35ff00'
-
 });
 
 
