@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Button, Grid, TextField, Typography} from "@mui/material";
+import {Button, Grid, Select, Stack, TextField, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import './Game.css';
-import {Box} from "@material-ui/core";
+import {Box, FormControl, FormHelperText, MenuItem} from "@material-ui/core";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
+
 const MyButton = styled(Button)({
     border: '2px solid',
     borderRadius: 0,
@@ -45,15 +46,25 @@ class Board extends React.Component {
         this.changeSymbolO = this.changeSymbolO.bind(this);
 
     }
-    resetBoard= (event) => {
-        this.setState({gameTiles: event.target.fill(null)});
-    }
+
     changeSymbolX= (event) => {
         this.setState({symbolX: event.target.value});
+        const tiles = this.state.gameTiles.fill(null);
+
+        this.setState({
+            gameTiles: tiles,
+            nextMove: this.state.symbolX
+        })
     }
 
     changeSymbolO= (event) => {
         this.setState({symbolO: event.target.value});
+        const tiles = this.state.gameTiles.fill(null);
+
+        this.setState({
+            gameTiles: tiles,
+            nextMove: this.state.symbolX
+        })
     }
     handleClickReset(){
         const tiles = this.state.gameTiles.fill(null);
@@ -84,8 +95,10 @@ class Board extends React.Component {
                 />
         );
     }
+
     render() {
         const winner = calculateWinner(this.state.gameTiles);
+
         let status;
         if (winner) {
             status = 'Winner: ' + winner;
@@ -98,38 +111,43 @@ class Board extends React.Component {
 
         return (
             <div>
+                <Stack  direction={'row'} spacing={3} marginTop={'auto'} >
+                <Stack justifyContent={"center"} spacing={3}>
+
                 <TextField
-                    sx={{borderColor:'#ffffff'}}
                     //defaultValue={'X'}
-                    label="Player 1 Icon"
-                    variant="outlined"
+                    inputProps={{ min: 0, style: {textAlign: 'center'}}}
+                    sx={{ width: 72}}
+                    label={'Player 1 Icon'}
+                    variant="standard"
                     value={this.state.symbolX}
                     onChange={this.changeSymbolX}
                 />
-                <br/>
-                <br/>
                 <TextField
-                    sx={{borderColor:'#ffffff'}}
                     //defaultValue={'O'}
-                    label="Player 2 Icon"
-                    variant="outlined"
+                    inputProps={{ min: 0, style: {textAlign: 'center'}}}
+                    sx={{ width: 72}}
+                    label={'Player 2 Icon'}
+                    variant="standard"
                     value={this.state.symbolO}
                     onChange={this.changeSymbolO}
                 />
+                </Stack>
+                <Stack>
                 <Typography variant={"h4"}>
                     <div className="status">
                         {status}
                     </div>
                 </Typography>
-                <div className="board-row">
+                <Stack direction={'row'}>
                     {this.renderTile(0)}{this.renderTile(1)}{this.renderTile(2)}
-                </div>
-                <div className="board-row">
+                </Stack>
+                <Stack direction={'row'}>
                     {this.renderTile(3)}{this.renderTile(4)}{this.renderTile(5)}
-                </div>
-                <div className="board-row">
+                </Stack>
+                <Stack direction={'row'}>
                     {this.renderTile(6)}{this.renderTile(7)}{this.renderTile(8)}
-                </div>
+                </Stack>
                 <div>
                     <Button sx={{ m:1, borderColor:'#ffffff'}} style={{
                         color: '#ffffff',
@@ -138,9 +156,19 @@ class Board extends React.Component {
                         Reset &nbsp;
                         <AutorenewIcon/>
                     </Button>
-                </div>
-                <br/>
 
+                </div>
+                <div>
+                    <FormControl sx={{ width:25}}>
+                        <Select sx={{ m: 0, width:100}}>
+                            <MenuItem value={0}>Normal</MenuItem>
+                            <MenuItem value={1}>Timed</MenuItem>
+                        </Select>
+                        <FormHelperText>Game Mode Select</FormHelperText>
+                    </FormControl>
+                </div>
+                </Stack>
+                </Stack>
             </div>
         );
     }
