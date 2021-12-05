@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Button, Grid, Select, Stack, TextField, Typography} from "@mui/material";
+import {Button, Grid, Stack, TextField, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import './Game.css';
-import {Box, FormControl, FormHelperText, MenuItem} from "@material-ui/core";
+import {Chip} from "@material-ui/core";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
+
 
 const MyButton = styled(Button)({
     border: '2px solid',
@@ -17,19 +18,38 @@ const MyButton = styled(Button)({
 
 });
 
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+        color: 'green',
+    },
+    '& label': {
+        color: 'green',
+    },
+    '& .MuiInput-underline:after': {
+        borderBottomColor: 'green',
+    },
+
+});
+
 
 class Tile extends React.Component {
     render() {
         return (
-            <MyButton
-                className="tile"
-                onClick={() => this.props.onClick()}
-            >
-                {this.props.value}
-            </MyButton>
+
+            <div>
+                <MyButton
+                    className="tile"
+                    onClick={() => this.props.onClick()}
+                >
+                    {this.props.value}
+                </MyButton>
+        </div>
+
         );
     }
 }
+
+
 
 
 class Board extends React.Component {
@@ -103,7 +123,7 @@ class Board extends React.Component {
         if (winner) {
             status = 'Winner: ' + winner;
         } else if(winner === 0){
-            status = 'Cat\'s Game';
+            status = 'Cat\'s Game3x3';
         }
         else {
             status = 'Next player: ' + (this.state.nextMove ? this.state.symbolX  : this.state.symbolO );
@@ -111,34 +131,40 @@ class Board extends React.Component {
 
         return (
             <div>
-                <Stack  direction={'row'} spacing={3} marginTop={'auto'} >
-                <Stack justifyContent={"center"} spacing={3}>
+                <Typography variant={"h2"}
+                            style={{color: 'white',
+                            }}>
 
-                <TextField
-                    //defaultValue={'X'}
-                    inputProps={{ min: 0, style: {textAlign: 'center'}}}
-                    sx={{ width: 72}}
-                    label={'Player 1 Icon'}
-                    variant="standard"
-                    value={this.state.symbolX}
-                    onChange={this.changeSymbolX}
-                />
-                <TextField
-                    //defaultValue={'O'}
-                    inputProps={{ min: 0, style: {textAlign: 'center'}}}
-                    sx={{ width: 72}}
-                    label={'Player 2 Icon'}
-                    variant="standard"
-                    value={this.state.symbolO}
-                    onChange={this.changeSymbolO}
-                />
+                    &nbsp;&nbsp;&nbsp;TIC-TAC-TOE
+                </Typography>
+                <Stack  direction={'row'} spacing={3} marginTop={'auto'} >
+                <Stack justifyContent={"center"} spacing={3} >
+                    <CssTextField
+                                  id="custom-css-outlined-input"
+                                  inputProps={{ min: 0, style: {textAlign: 'center'}}}
+                                  sx={{ width: 72, input: { color: 'white' }}}
+                                  label={'Player 1 Icon'}
+                                  variant="standard"
+                                  value={this.state.symbolX}
+                                  onChange={this.changeSymbolX}
+                    />
+                    <CssTextField
+                                  id="custom-css-outlined-input"
+                                  inputProps={{ min: 0, style: {textAlign: 'center'}}}
+                                  sx={{ width: 72 , input: { color: 'white' }}}
+                                  label={'Player 2 Icon'}
+                                  variant="standard"
+                                  value={this.state.symbolO}
+                                  onChange={this.changeSymbolO}
+                    />
                 </Stack>
                 <Stack>
-                <Typography variant={"h4"}>
-                    <div className="status">
-                        {status}
-                    </div>
+
+                <Typography variant={"h4"} >
+                    <Chip style={{color: 'green', backgroundColor: 'white'}} label={status} variant={'outlined'}/>
                 </Typography>
+
+                    <br/>
                 <Stack direction={'row'}>
                     {this.renderTile(0)}{this.renderTile(1)}{this.renderTile(2)}
                 </Stack>
@@ -158,15 +184,6 @@ class Board extends React.Component {
                     </Button>
 
                 </div>
-                <div>
-                    <FormControl sx={{ width:25}}>
-                        <Select sx={{ m: 0, width:100}}>
-                            <MenuItem value={0}>Normal</MenuItem>
-                            <MenuItem value={1}>Timed</MenuItem>
-                        </Select>
-                        <FormHelperText>Game Mode Select</FormHelperText>
-                    </FormControl>
-                </div>
                 </Stack>
                 </Stack>
             </div>
@@ -177,22 +194,15 @@ class Board extends React.Component {
 
 
 
-class Game extends React.Component {
+class Game3x3 extends React.Component {
     render() {
         return (
             <div className="game">
-
-            <Grid>
-                    <Box m={5}>
-
-                    </Box>
-            </Grid>
             <Grid>
                 <div className="game-board">
                     <Board />
                 </div>
             </Grid>
-
             </div>
         );
     }
@@ -218,7 +228,7 @@ function calculateWinner(gameTiles) {
 
 }
 
-export default Game;
+export default Game3x3;
 
 
 

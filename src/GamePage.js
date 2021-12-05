@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import Game from "./Game";
-import { Grid} from "@material-ui/core";
-import { Typography} from "@mui/material";
+import Game from "./Game3x3";
+import Game2 from "./Game3x3";
+
+import {Button, FormControlLabel, FormLabel, Grid, Radio, RadioGroup} from "@material-ui/core";
+import {Link, Typography} from "@mui/material";
+import Game3x3 from "./Game3x3";
 
 
 export class GamePage extends Component {
@@ -9,37 +12,25 @@ export class GamePage extends Component {
     render() {
         return (
             <div   style={{
-                backgroundColor: '#4d4d4d',
-
+                backgroundColor: '#1c1c1c',
             }}>
-                <Grid
-                    container
-                    spacing={0}
-                    direction="column"
-                    alignItems="center"
-                    justifyContent="center"
-                    style={{ minHeight: '100vh' }}
-                >
                     <Grid container
-                          spacing={1}
-                          direction="column"
                           alignItems="center"
                           justifyContent="center"
-                          style={{ minHeight: '100vh' }}>
-                        <Typography  align={"center"}>
-                            <Typography variant={"h2"} style={{
-                                color: 'white',
-
-                            }}>TIC-TAC-TOE
-                            </Typography>
+                          style={{ minHeight: '100vh' }}
+                        >
+                        <Typography  variant={'h2'} style={{color: 'white'}} align={"center"}>
                             <br/>
-                            <Game/>
+                            <Game3x3/>
+                            <Link href="/" >
+                                <Button
+                                    variant="contained"
+                                >
+                                    back
+                                </Button>
+                            </Link>
                         </Typography>
                     </Grid>
-
-
-                </Grid>
-
             </div>
         );
     }
