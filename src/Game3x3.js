@@ -58,8 +58,8 @@ class Board extends React.Component {
         this.state = {
             gameTiles: Array(9).fill(null),
             nextMove: true,
-            symbolX: 'X',
-            symbolO:'O'
+            symbolX: '👿',
+            symbolO:'🤩'
         };
 
         this.changeSymbolX = this.changeSymbolX.bind(this);

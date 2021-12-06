@@ -1,8 +1,5 @@
-
 import React, {Component} from 'react';
-
-
-import {Button, FormControlLabel, FormLabel, Grid, Radio, RadioGroup} from "@material-ui/core";
+import {Button,Grid} from "@material-ui/core";
 import {Link, Typography} from "@mui/material";
 import Game2x2 from "./Game2x2";
 
@@ -22,14 +19,14 @@ export class GamePage3 extends Component {
                     <Typography  variant={'h2'} style={{color: 'white'}} align={"center"}>
                         <br/>
                         <Game2x2/>
-                        <Link href="/" >
-                            <Button
-                                variant="contained"
-                            >
-                                back
-                            </Button>
-                        </Link>
                     </Typography>
+                    <Link href="/" >
+                        <Button
+                            variant="contained"
+                        >
+                            back
+                        </Button>
+                    </Link>
                 </Grid>
             </div>
         );

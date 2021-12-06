@@ -2,13 +2,7 @@ import * as React from 'react';
 import {Button, Grid, Stack, TextField, Typography} from "@mui/material";
 import styled from "@emotion/styled";
 import './Game.css';
-import {
-    Chip,
-    FormControlLabel,
-    FormLabel,
-    Radio,
-    RadioGroup
-} from "@material-ui/core";
+import {Chip} from "@material-ui/core";
 import AutorenewIcon from "@mui/icons-material/Autorenew";
 
 
@@ -64,8 +58,8 @@ class Board extends React.Component {
         this.state = {
             gameTiles: Array(15).fill(null),
             nextMove: true,
-            symbolX: 'X',
-            symbolO:'O'
+            symbolX: '🤬',
+            symbolO:'🥲'
         };
 
         this.changeSymbolX = this.changeSymbolX.bind(this);

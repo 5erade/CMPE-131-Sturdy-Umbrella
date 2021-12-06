@@ -57,8 +57,8 @@ class Board extends React.Component {
         this.state = {
             gameTiles: Array(9).fill(null),
             nextMove: true,
-            symbolX: 'X',
-            symbolO:'O'
+            symbolX: '💀',
+            symbolO:'👽'
         };
 
         this.changeSymbolX = this.changeSymbolX.bind(this);
@@ -206,7 +206,7 @@ class Game2x2 extends React.Component {
 
 function calculateWinner(gameTiles) {
     const lines = [
-        [0,1], [0,2],[0,3],[2,3]
+        [0,1], [0,2],[0,3],[2,3],[1,3],[1,2]
     ];
     for (let i = 0; i < lines.length; i++) {
         const [a, b] = lines[i];

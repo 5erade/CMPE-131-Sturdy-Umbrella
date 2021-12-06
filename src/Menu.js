@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
-import Game from "./Game3x3";
-import Game2 from "./Game3x3";
-
-import {Button, FormControlLabel, FormLabel, Grid, Radio, RadioGroup} from "@material-ui/core";
+import {Button,Grid} from "@material-ui/core";
 import {Link, Typography} from "@mui/material";
 
 
