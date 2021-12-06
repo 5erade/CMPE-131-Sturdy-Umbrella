@@ -123,7 +123,7 @@ class Board extends React.Component {
         if (winner) {
             status = 'Winner: ' + winner;
         } else if(winner === 0){
-            status = 'Cat\'s Game3x3';
+            status = 'Cat\'s Game 🥱';
         }
         else {
             status = 'Next player: ' + (this.state.nextMove ? this.state.symbolX  : this.state.symbolO );
@@ -161,7 +161,7 @@ class Board extends React.Component {
                 <Stack>
 
                 <Typography variant={"h4"} >
-                    <Chip style={{color: 'green', backgroundColor: 'white'}} label={status} variant={'outlined'}/>
+                    <Chip style={{fontSize: "24px",color: 'green', backgroundColor: 'white'}} label={status} variant={'outlined'}/>
                 </Typography>
 
                     <br/>
