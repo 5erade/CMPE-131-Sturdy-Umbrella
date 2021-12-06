@@ -207,7 +207,7 @@ class Game2x2 extends React.Component {
 
 function calculateWinner(gameTiles) {
     const lines = [
-        [0,1], [0,2],[0,3]
+        [0,1], [0,2],[0,3],[2,3]
     ];
     for (let i = 0; i < lines.length; i++) {
         const [a, b] = lines[i];
